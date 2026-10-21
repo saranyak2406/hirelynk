@@ -577,3 +577,45 @@
   font-size: 0.84rem;
   color: var(--text-muted);
 }
+
+/* Mobile Responsive Adjustments for Feed */
+@media (max-width: 600px) {
+  .post-card {
+    padding: 14px 12px 6px;
+    border-radius: var(--radius-md);
+  }
+
+  .post-actions-bar {
+    padding: 2px 0;
+  }
+
+  .post-action-btn {
+    padding: 8px 4px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+
+  .create-post-card {
+    padding: 12px;
+    border-radius: var(--radius-md);
+  }
+
+  .create-post-actions-row {
+    justify-content: space-between;
+  }
+
+  .quick-action-btn {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+
+  .post-author-name {
+    font-size: 0.9rem;
+  }
+
+  .post-text {
+    font-size: 0.9rem;
+  }
+}
+

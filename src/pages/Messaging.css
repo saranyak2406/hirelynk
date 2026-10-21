@@ -254,12 +254,37 @@
   padding: 32px;
 }
 
+.mobile-back-to-convs-btn {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .messaging-card-container {
     grid-template-columns: 1fr;
-    height: auto;
+    height: calc(100vh - var(--nav-height) - 100px);
+    min-height: 500px;
   }
-  .conv-list-pane {
-    max-height: 280px;
+
+  .messaging-card-container.mobile-list-open .active-chat-pane {
+    display: none;
+  }
+
+  .messaging-card-container.mobile-list-open .conv-list-pane {
+    display: flex;
+    height: 100%;
+  }
+
+  .messaging-card-container.mobile-chat-open .conv-list-pane {
+    display: none;
+  }
+
+  .messaging-card-container.mobile-chat-open .active-chat-pane {
+    display: flex;
+    height: 100%;
+  }
+
+  .mobile-back-to-convs-btn {
+    display: inline-flex !important;
   }
 }
+

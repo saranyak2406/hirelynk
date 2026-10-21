@@ -6,6 +6,7 @@ import { DataProvider } from './context/DataContext';
 
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
+import { MobileBottomNav } from './components/common/MobileBottomNav';
 
 import { LandingPage } from './pages/LandingPage';
 import { LoginPage } from './pages/LoginPage';
@@ -66,6 +67,7 @@ function AppContent() {
         </Routes>
       </main>
       {!isAuthPage && <Footer />}
+      <MobileBottomNav />
     </div>
   );
 }

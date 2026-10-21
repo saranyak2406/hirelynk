@@ -257,3 +257,57 @@
   align-items: center;
   gap: 8px;
 }
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 600px) {
+  .invitation-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .invitation-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .invitation-actions .btn {
+    flex: 1;
+  }
+
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .person-card-body {
+    padding: 0 10px 12px;
+  }
+
+  .person-name {
+    font-size: 0.85rem;
+  }
+
+  .person-headline {
+    font-size: 0.7rem;
+    height: 24px;
+  }
+
+  .active-conn-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .active-conn-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 380px) {
+  .people-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

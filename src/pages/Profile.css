@@ -250,13 +250,60 @@
 
 @media (max-width: 640px) {
   .profile-cover-banner {
-    height: 140px;
+    height: 120px;
+  }
+  .profile-info-content {
+    padding: 0 16px 20px;
   }
   .profile-avatar-row {
-    margin-top: -48px;
+    margin-top: -44px;
+    margin-bottom: 12px;
+  }
+  .profile-main-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-full-name {
+    font-size: 1.35rem;
+  }
+  .profile-headline-text {
+    font-size: 0.9rem;
   }
   .open-to-work-card {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+  .open-to-work-card .btn {
+    width: 100%;
+  }
+  .profile-quick-action-strip {
+    flex-direction: column;
+    width: 100%;
+  }
+  .profile-quick-action-strip .btn {
+    width: 100%;
+  }
+  .profile-section-card {
+    padding: 16px;
+  }
+  .skills-grid-endorsements {
+    grid-template-columns: 1fr;
+  }
+  .experience-item {
+    gap: 12px;
+  }
+  .exp-company-logo,
+  .edu-icon-box {
+    width: 42px;
+    height: 42px;
+  }
+  .resume-card-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .resume-card-box .btn {
+    flex: 1;
   }
 }
+

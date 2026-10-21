@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Search, MapPin, Briefcase, Bookmark, CheckCircle2, RotateCcw, Filter, X } from 'lucide-react';
+import { Search, MapPin, Briefcase, Bookmark, CheckCircle2, RotateCcw, Filter, X, ArrowLeft } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { JobCard } from '../components/jobs/JobCard';
 import { JobDetailView } from '../components/jobs/JobDetailView';
@@ -18,6 +18,7 @@ export const JobsPage = () => {
   const [experience, setExperience] = useState('All');
   const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'all');
   const [selectedJobId, setSelectedJobId] = useState(searchParams.get('id') || null);
+  const [mobileViewMode, setMobileViewMode] = useState(searchParams.get('id') ? 'detail' : 'list');
 
   useEffect(() => {
     const qParam = searchParams.get('q');
@@ -27,7 +28,10 @@ export const JobsPage = () => {
     if (tabParam) setActiveTab(tabParam);
 
     const idParam = searchParams.get('id');
-    if (idParam) setSelectedJobId(idParam);
+    if (idParam) {
+      setSelectedJobId(idParam);
+      setMobileViewMode('detail');
+    }
   }, [searchParams]);
 
   // Filtered jobs calculation
@@ -206,7 +210,7 @@ export const JobsPage = () => {
 
       {/* Main Split Layout */}
       <div className="container">
-        <div className="jobs-layout">
+        <div className={`jobs-layout ${mobileViewMode === 'detail' ? 'mobile-show-detail' : 'mobile-show-list'}`}>
           {/* Left Column: Job Cards List */}
           <div className="jobs-list-container">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px 8px' }}>
@@ -223,7 +227,10 @@ export const JobsPage = () => {
                 key={job.id}
                 job={job}
                 isSelected={job.id === activeJob?.id}
-                onSelect={() => setSelectedJobId(job.id)}
+                onSelect={() => {
+                  setSelectedJobId(job.id);
+                  setMobileViewMode('detail');
+                }}
               />
             ))}
 
@@ -245,6 +252,12 @@ export const JobsPage = () => {
 
           {/* Right Column: Sticky Job Detail View */}
           <div className="job-detail-sticky-wrap">
+            <button
+              onClick={() => setMobileViewMode('list')}
+              className="btn btn-secondary btn-sm mobile-back-to-jobs-btn"
+            >
+              <ArrowLeft size={15} /> Back to Job Listings
+            </button>
             <JobDetailView job={activeJob} />
           </div>
         </div>

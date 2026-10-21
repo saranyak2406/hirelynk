@@ -10,7 +10,8 @@ import {
   CheckCheck,
   Check,
   Circle,
-  MessageSquare
+  MessageSquare,
+  ArrowLeft
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
@@ -23,6 +24,7 @@ export const MessagingPage = () => {
   const [activeConvId, setActiveConvId] = useState(conversations[0]?.id || null);
   const [inputText, setInputText] = useState('');
   const [searchConv, setSearchConv] = useState('');
+  const [mobileChatOpen, setMobileChatOpen] = useState(false);
   const messagesEndRef = useRef(null);
 
   const activeConversation = conversations.find((c) => c.id === activeConvId) || conversations[0];
@@ -48,7 +50,7 @@ export const MessagingPage = () => {
 
   return (
     <div className="container" style={{ paddingTop: 20 }}>
-      <div className="lynk-card messaging-card-container">
+      <div className={`lynk-card messaging-card-container ${mobileChatOpen ? 'mobile-chat-open' : 'mobile-list-open'}`}>
         {/* Left Pane: Conversation List */}
         <aside className="conv-list-pane">
           <div className="conv-pane-header">
@@ -72,7 +74,10 @@ export const MessagingPage = () => {
               return (
                 <div
                   key={conv.id}
-                  onClick={() => setActiveConvId(conv.id)}
+                  onClick={() => {
+                    setActiveConvId(conv.id);
+                    setMobileChatOpen(true);
+                  }}
                   className={`conv-item ${isActive ? 'active' : ''}`}
                 >
                   <div className="conv-avatar-box">
@@ -115,7 +120,14 @@ export const MessagingPage = () => {
             <>
               {/* Chat Header */}
               <div className="chat-header">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <button
+                    onClick={() => setMobileChatOpen(false)}
+                    className="btn-icon mobile-back-to-convs-btn"
+                    title="Back to conversations"
+                  >
+                    <ArrowLeft size={18} />
+                  </button>
                   <img
                     src={activeConversation.participantAvatar}
                     alt={activeConversation.participantName}

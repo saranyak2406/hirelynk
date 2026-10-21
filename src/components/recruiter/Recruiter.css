@@ -185,3 +185,50 @@
   color: var(--text-light);
   font-style: italic;
 }
+
+/* Mobile Responsive Adjustments for Recruiter */
+@media (max-width: 768px) {
+  .recruiter-hero-card {
+    padding: 18px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .recruiter-hero-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .recruiter-hero-content .btn {
+    width: 100%;
+  }
+
+  .recruiter-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stat-metric-card {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .metric-icon-box {
+    width: 38px;
+    height: 38px;
+  }
+
+  .metric-number {
+    font-size: 1.3rem;
+  }
+
+  .metric-label {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .recruiter-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
